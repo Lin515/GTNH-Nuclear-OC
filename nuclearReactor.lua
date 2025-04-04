@@ -84,7 +84,8 @@ local function check()
             checkHasFuelRods()
             transposer.transferItem(me_interface, reactor, 1, me_interfaceFuelRodsIndex, i)
         else
-            if item['maxDamage'] == 0 then
+            local name = item['name']
+            if item['maxDamage'] == 0 or (string.find(name, "Dep") == string.len(name) - 2) then
                 checkHasFuelRods()
                 transposer.transferItem(reactor, me_interface, 1, i, me_interfaceEmptyIndex)
                 transposer.transferItem(me_interface, reactor, 1, me_interfaceFuelRodsIndex, i)
